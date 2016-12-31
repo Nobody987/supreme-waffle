@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PlanetaryGovernor.main;
 
 namespace PlanetaryGovernor
 {
-    public partial class Form1 : Form
+    public partial class MainScreen : Form
     {
-        public Form1()
+        public Planet p;
+
+        public MainScreen(Planet p)
         {
             InitializeComponent();
+            this.p = p;
+
+            Image image_f = Image.FromFile(p.Planet_image);
+
+            pictureBox1.BackgroundImage = image_f;
         }
     }
 }
