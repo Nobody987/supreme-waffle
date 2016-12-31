@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,26 +12,35 @@ namespace PlanetaryGovernor.main
         string planet_image;
 
         string planet_name;
+        string planet_type;
         long planet_population_size;
         long planet_radius;
         long planet_surface_area;
         long planet_number_of_provinces;
         long planet_total_province_size;
         List<Province> planet_province_list;
+        SolarSystem home_solarSystem;
+        Sector home_sector;
+        Empire home_empire;
 
-        public Planet(string planet_name, long planet_radius, List<Province> planet_province_list, string planet_image)
+        public Planet(string planet_name, string planet_type, long planet_radius, List<Province> planet_province_list, string planet_image, SolarSystem home_solarSystem, Sector home_sector, Empire home_empire)
         {
             this.planet_name = planet_name;
+            this.planet_type = planet_type;
             this.planet_province_list = planet_province_list;
             this.planet_radius = planet_radius;
-            this.Planet_image = planet_image;
-            Planet_surface_area = (long)(4 * planet_radius * planet_radius * Math.PI);
-            planet_set_population_size(planet_province_list);
-            planet_set_total_province_size(planet_province_list);
-            planet_set_total_numberOf_provinces(planet_province_list);
+            this.planet_image = planet_image;
+            planet_surface_area = (long)(4 * planet_radius * planet_radius * Math.PI);
+            planet_set_population_size();
+            planet_set_total_province_size();
+            planet_set_total_numberOf_provinces();
+            planet_number_of_provinces = Planet_number_of_provinces;
+            this.home_solarSystem = home_solarSystem;
+            this.home_sector = home_sector;
+            this.home_empire = home_empire;
         }
 
-        public void planet_set_population_size(List<Province> planet_province_list)
+        public void planet_set_population_size()
         {
             if (planet_province_list != null)
             {
@@ -42,7 +52,7 @@ namespace PlanetaryGovernor.main
             else Planet_population_size = 0;
         }
 
-        public void planet_set_total_province_size(List<Province> planet_province_list)
+        public void planet_set_total_province_size()
         {
             if (planet_province_list != null)
             {
@@ -54,7 +64,7 @@ namespace PlanetaryGovernor.main
             else Planet_total_province_size = 0;
         }
 
-        public void planet_set_total_numberOf_provinces(List<Province> planet_province_list)
+        public void planet_set_total_numberOf_provinces()
         {
             if (planet_province_list != null)
             {
@@ -72,7 +82,7 @@ namespace PlanetaryGovernor.main
         {
             get
             {
-                return Planet_name;
+                return planet_name;
             }
 
             set
@@ -169,6 +179,58 @@ namespace PlanetaryGovernor.main
             set
             {
                 planet_image = value;
+            }
+        }
+
+        internal SolarSystem Home_solarSystem
+        {
+            get
+            {
+                return home_solarSystem;
+            }
+
+            set
+            {
+                home_solarSystem = value;
+            }
+        }
+
+        internal Sector Home_sector
+        {
+            get
+            {
+                return home_sector;
+            }
+
+            set
+            {
+                home_sector = value;
+            }
+        }
+
+        internal Empire Home_empire
+        {
+            get
+            {
+                return home_empire;
+            }
+
+            set
+            {
+                home_empire = value;
+            }
+        }
+
+        public string Planet_type
+        {
+            get
+            {
+                return planet_type;
+            }
+
+            set
+            {
+                planet_type = value;
             }
         }
     }

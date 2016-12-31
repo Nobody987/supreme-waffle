@@ -70,13 +70,16 @@
     <Compile Include="MainScreen.Designer.cs">
       <DependentUpon>MainScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="main\Building.cs" />
+    <Compile Include="main\Sector.cs" />
     <Compile Include="main\Empire.cs" />
     <Compile Include="main\Planet.cs" />
     <Compile Include="main\Population.cs" />
     <Compile Include="main\Province.cs" />
-    <Compile Include="main\System.cs" />
+    <Compile Include="main\SolarSystem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tools\Formatting.cs" />
     <EmbeddedResource Include="MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
     </EmbeddedResource>

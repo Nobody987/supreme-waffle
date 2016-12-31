@@ -14,8 +14,9 @@ namespace PlanetaryGovernor.main
         bool province_isCapital;
         Population province_population;
         List<Province> province_list_neighbours;
+        List<Building> province_building_list;
 
-        public Province(string province_name, long province_size, double province_unreast, bool province_isCapital, Population province_population, List<Province> province_list_neighbours)
+        public Province(string province_name, long province_size, double province_unreast, bool province_isCapital, Population province_population, List<Province> province_list_neighbours, List<Building> province_building_list)
         {
             this.Province_name = province_name;
             this.Province_size = province_size;
@@ -23,6 +24,7 @@ namespace PlanetaryGovernor.main
             this.Province_isCapital = province_isCapital;
             this.Province_population = province_population;
             this.Province_list_neighbours = province_list_neighbours;
+            this.province_building_list = province_building_list;
         }
 
         public Province()

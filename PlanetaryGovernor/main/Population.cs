@@ -10,13 +10,15 @@ namespace PlanetaryGovernor.main
     {
         string population_name;
         long population_size_total;
+        double population_growth;
         long population_size_change;
 
-        public Population(string population_name, long population_size_total, long population_size_change)
+        public Population(string population_name, long population_size_total, double population_growth)
         {
             this.population_name = population_name;
             this.population_size_total = population_size_total;
-            this.population_size_change = population_size_change;
+            this.population_growth = population_growth;
+            Population_size_change = population_size_change;
         }
 
         public Population()
@@ -63,7 +65,20 @@ namespace PlanetaryGovernor.main
 
             set
             {
-                population_size_change = value;
+                population_size_change = (long)(population_size_total * population_growth);
+            }
+        }
+
+        public double Population_growth
+        {
+            get
+            {
+                return population_growth;
+            }
+
+            set
+            {
+                population_growth = value;
             }
         }
     }
