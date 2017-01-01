@@ -40,13 +40,48 @@ namespace PlanetaryGovernor.main
             this.home_empire = home_empire;
         }
 
+        public List<Population> planet_population_list_accumulative()
+        {
+            List<Population> population_list = new List<Population>();
+            List<Population> population_list_accumulative = new List<Population>();
+
+            foreach (Province province in Planet_province_list)
+            {
+                population_list.AddRange(province.Province_population_list);
+            }
+            
+            foreach (Population population in population_list)
+            {
+                if (population_list_accumulative.Count > 0)
+                {
+                    foreach (Population pop in population_list_accumulative)
+                    {
+                        if (pop.Population_name == population.Population_name) //TODO change to ID comparison
+                        {
+                            pop.Population_size_total += population.Population_size_total;
+                        }
+                        else
+                        {
+                            population_list_accumulative.Add(population);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    population_list_accumulative.Add(population);
+                }
+            }
+            return population_list_accumulative;
+        }
+
         public void planet_set_population_size()
         {
             if (planet_province_list != null)
             {
                 foreach (Province item in planet_province_list)
                 {
-                    Planet_population_size += item.Province_population.Population_size_total;
+                    Planet_population_size += item.Province_population_list.Sum(pop => pop.Population_size_total);
                 }
             }
             else Planet_population_size = 0;
@@ -156,7 +191,7 @@ namespace PlanetaryGovernor.main
             }
         }
 
-        internal List<Province> Planet_province_list
+        public List<Province> Planet_province_list
         {
             get
             {
@@ -182,7 +217,7 @@ namespace PlanetaryGovernor.main
             }
         }
 
-        internal SolarSystem Home_solarSystem
+        public SolarSystem Home_solarSystem
         {
             get
             {
@@ -195,7 +230,7 @@ namespace PlanetaryGovernor.main
             }
         }
 
-        internal Sector Home_sector
+        public Sector Home_sector
         {
             get
             {
@@ -208,7 +243,7 @@ namespace PlanetaryGovernor.main
             }
         }
 
-        internal Empire Home_empire
+        public Empire Home_empire
         {
             get
             {

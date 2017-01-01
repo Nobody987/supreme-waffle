@@ -14,6 +14,11 @@ namespace PlanetaryGovernor.tools
             return number.ToString("N0", CultureInfo.CreateSpecificCulture("en-UK"));
         }
 
+        public static string format_percent(double number)
+        {
+            return number.ToString("P", CultureInfo.CreateSpecificCulture("en-UK"));
+        }
+
         public static string format_add_square_kilometers(string number)
         {
             return number + " km²";
