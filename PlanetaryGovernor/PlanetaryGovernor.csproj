@@ -80,6 +80,7 @@
     <Compile Include="main\Province.cs" />
     <Compile Include="main\SolarSystem.cs" />
     <Compile Include="main\Time.cs" />
+    <Compile Include="main\_Controller.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tools\Formatting.cs" />

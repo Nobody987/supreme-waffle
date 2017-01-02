@@ -15,6 +15,7 @@ namespace PlanetaryGovernor
 {
     public partial class MainScreen : Form
     {
+        _Controller _controller;
 
         public Planet p;
         List<Population> population_list_accumulative;
@@ -22,6 +23,8 @@ namespace PlanetaryGovernor
 
         public MainScreen(Planet p, List<IndustryType> AllIndustryType_list)
         {
+            _controller = _Controller.Instance;
+
             this.p = p;
             population_list_accumulative = p.planet_population_list_accumulative();
             this.AllIndustryType_list = AllIndustryType_list;
@@ -131,17 +134,21 @@ namespace PlanetaryGovernor
 
         private void update_planet_information()
         {
-            foreach (ListViewItem item in listViewPlanetInformation.Items)
+            string[,] result = _controller.get_planet_information(p);
+
+            listViewPlanetInformation.Items.Clear();
+            ListViewItem[] array = new ListViewItem[result.GetLength(1)];
+
+            for (int i = 0; i < result.GetLength(1); i++)
             {
-                
+                string[] parameter_array = new string[2];
+                parameter_array[0] = (result[0, i]);
+                parameter_array[1] = (result[1, i]);
+                ListViewItem item = new ListViewItem(parameter_array);
+                array[i] = item;
             }
 
-            listViewPlanetInformation.Items[0].SubItems.Add(p.Home_sector.ToString());
-            listViewPlanetInformation.Items[1].SubItems.Add(p.Home_solarSystem.ToString());
-            listViewPlanetInformation.Items[2].SubItems.Add(Formatting.format_thousands(p.Planet_population_size));
-            listViewPlanetInformation.Items[3].SubItems.Add(Formatting.format_add_square_kilometers(Formatting.format_thousands(p.Planet_surface_area)));
-            listViewPlanetInformation.Items[4].SubItems.Add(p.Planet_type.ToString());
-            listViewPlanetInformation.Items[5].SubItems.Add(p.Planet_number_of_provinces.ToString());
+            listViewPlanetInformation.Items.AddRange(array);
         }
 
         private void updateAllPopulations(TimeSpan TS)
@@ -151,8 +158,32 @@ namespace PlanetaryGovernor
                 foreach (Population pop in item.Province_population_list)
                 {
                     pop.UpdatePopulation(TS);
-                    update_population_statistics(pop);
+                    p.planet_set_population_size(); //TODO
+                    //update_population_statistics(pop);
                 }
+            }
+            //treeViewPopulationBreakdown_AfterSelect(null, null); //BAD
+        }
+
+        private void buttonTurn30D_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 30; i++)
+            {
+                Time.increment_date(new TimeSpan(1, 0, 0, 0));
+                labelTime.Text = Time.Date.ToString();
+
+                updateAll(Time.Delta);
+            }
+        }
+
+        private void buttonTurn1Y_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 365; i++)
+            {
+                Time.increment_date(new TimeSpan(1, 0, 0, 0));
+                labelTime.Text = Time.Date.ToString();
+
+                updateAll(Time.Delta);
             }
         }
     }

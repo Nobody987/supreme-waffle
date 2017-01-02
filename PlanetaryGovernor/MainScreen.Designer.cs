@@ -33,22 +33,24 @@
             this.tabPlanet = new System.Windows.Forms.TabPage();
             this.tabProvinces = new System.Windows.Forms.TabPage();
             this.tabPopulation = new System.Windows.Forms.TabPage();
-            this.labelPopulationIndustry = new System.Windows.Forms.Label();
+            this.panelPopulationInfo = new System.Windows.Forms.Panel();
             this.labelPopulationName = new System.Windows.Forms.Label();
+            this.labelPopulationGrowth = new System.Windows.Forms.Label();
+            this.labelPopulationIndustry = new System.Windows.Forms.Label();
+            this.labelPopulationSize = new System.Windows.Forms.Label();
+            this.listViewIndustryBreakdown = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.treeViewPopulationBreakdown = new System.Windows.Forms.TreeView();
             this.labelPlanetName = new System.Windows.Forms.Label();
             this.listViewPlanetInformation = new System.Windows.Forms.ListView();
             this.columnType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.labelPlanetInformation = new System.Windows.Forms.Label();
-            this.listViewIndustryBreakdown = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.labelPopulationSize = new System.Windows.Forms.Label();
-            this.labelPopulationGrowth = new System.Windows.Forms.Label();
-            this.panelPopulationInfo = new System.Windows.Forms.Panel();
-            this.buttonTime = new System.Windows.Forms.Button();
+            this.buttonTime1D = new System.Windows.Forms.Button();
             this.labelTime = new System.Windows.Forms.Label();
+            this.buttonTurn30D = new System.Windows.Forms.Button();
+            this.buttonTurn1Y = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.tabPopulation.SuspendLayout();
@@ -107,15 +109,18 @@
             this.tabPopulation.Text = "Population";
             this.tabPopulation.UseVisualStyleBackColor = true;
             // 
-            // labelPopulationIndustry
+            // panelPopulationInfo
             // 
-            this.labelPopulationIndustry.AutoSize = true;
-            this.labelPopulationIndustry.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPopulationIndustry.Location = new System.Drawing.Point(3, 242);
-            this.labelPopulationIndustry.Name = "labelPopulationIndustry";
-            this.labelPopulationIndustry.Size = new System.Drawing.Size(67, 17);
-            this.labelPopulationIndustry.TabIndex = 7;
-            this.labelPopulationIndustry.Text = "Industry";
+            this.panelPopulationInfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelPopulationInfo.Controls.Add(this.labelPopulationName);
+            this.panelPopulationInfo.Controls.Add(this.labelPopulationGrowth);
+            this.panelPopulationInfo.Controls.Add(this.labelPopulationIndustry);
+            this.panelPopulationInfo.Controls.Add(this.labelPopulationSize);
+            this.panelPopulationInfo.Controls.Add(this.listViewIndustryBreakdown);
+            this.panelPopulationInfo.Location = new System.Drawing.Point(169, 3);
+            this.panelPopulationInfo.Name = "panelPopulationInfo";
+            this.panelPopulationInfo.Size = new System.Drawing.Size(865, 612);
+            this.panelPopulationInfo.TabIndex = 10;
             // 
             // labelPopulationName
             // 
@@ -127,8 +132,63 @@
             this.labelPopulationName.TabIndex = 5;
             this.labelPopulationName.Text = "labelPopulationName";
             // 
+            // labelPopulationGrowth
+            // 
+            this.labelPopulationGrowth.AutoSize = true;
+            this.labelPopulationGrowth.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPopulationGrowth.Location = new System.Drawing.Point(0, 55);
+            this.labelPopulationGrowth.Name = "labelPopulationGrowth";
+            this.labelPopulationGrowth.Size = new System.Drawing.Size(168, 17);
+            this.labelPopulationGrowth.TabIndex = 9;
+            this.labelPopulationGrowth.Text = "labelPopulationGrowth";
+            // 
+            // labelPopulationIndustry
+            // 
+            this.labelPopulationIndustry.AutoSize = true;
+            this.labelPopulationIndustry.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPopulationIndustry.Location = new System.Drawing.Point(3, 242);
+            this.labelPopulationIndustry.Name = "labelPopulationIndustry";
+            this.labelPopulationIndustry.Size = new System.Drawing.Size(67, 17);
+            this.labelPopulationIndustry.TabIndex = 7;
+            this.labelPopulationIndustry.Text = "Industry";
+            // 
+            // labelPopulationSize
+            // 
+            this.labelPopulationSize.AutoSize = true;
+            this.labelPopulationSize.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPopulationSize.Location = new System.Drawing.Point(0, 38);
+            this.labelPopulationSize.Name = "labelPopulationSize";
+            this.labelPopulationSize.Size = new System.Drawing.Size(145, 17);
+            this.labelPopulationSize.TabIndex = 8;
+            this.labelPopulationSize.Text = "labelPopulationSize";
+            // 
+            // listViewIndustryBreakdown
+            // 
+            this.listViewIndustryBreakdown.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listViewIndustryBreakdown.GridLines = true;
+            this.listViewIndustryBreakdown.Location = new System.Drawing.Point(6, 262);
+            this.listViewIndustryBreakdown.Name = "listViewIndustryBreakdown";
+            this.listViewIndustryBreakdown.Size = new System.Drawing.Size(255, 343);
+            this.listViewIndustryBreakdown.TabIndex = 5;
+            this.listViewIndustryBreakdown.UseCompatibleStateImageBehavior = false;
+            this.listViewIndustryBreakdown.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Type";
+            this.columnHeader1.Width = 122;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Workers";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader2.Width = 125;
+            // 
             // treeViewPopulationBreakdown
             // 
+            this.treeViewPopulationBreakdown.HideSelection = false;
             this.treeViewPopulationBreakdown.Location = new System.Drawing.Point(3, 3);
             this.treeViewPopulationBreakdown.Name = "treeViewPopulationBreakdown";
             this.treeViewPopulationBreakdown.Size = new System.Drawing.Size(160, 612);
@@ -178,72 +238,15 @@
             this.labelPlanetInformation.TabIndex = 4;
             this.labelPlanetInformation.Text = "labelPlanetInformation";
             // 
-            // listViewIndustryBreakdown
+            // buttonTime1D
             // 
-            this.listViewIndustryBreakdown.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.listViewIndustryBreakdown.GridLines = true;
-            this.listViewIndustryBreakdown.Location = new System.Drawing.Point(6, 262);
-            this.listViewIndustryBreakdown.Name = "listViewIndustryBreakdown";
-            this.listViewIndustryBreakdown.Size = new System.Drawing.Size(255, 343);
-            this.listViewIndustryBreakdown.TabIndex = 5;
-            this.listViewIndustryBreakdown.UseCompatibleStateImageBehavior = false;
-            this.listViewIndustryBreakdown.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Type";
-            this.columnHeader1.Width = 122;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Workers";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader2.Width = 125;
-            // 
-            // labelPopulationSize
-            // 
-            this.labelPopulationSize.AutoSize = true;
-            this.labelPopulationSize.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPopulationSize.Location = new System.Drawing.Point(0, 38);
-            this.labelPopulationSize.Name = "labelPopulationSize";
-            this.labelPopulationSize.Size = new System.Drawing.Size(145, 17);
-            this.labelPopulationSize.TabIndex = 8;
-            this.labelPopulationSize.Text = "labelPopulationSize";
-            // 
-            // labelPopulationGrowth
-            // 
-            this.labelPopulationGrowth.AutoSize = true;
-            this.labelPopulationGrowth.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPopulationGrowth.Location = new System.Drawing.Point(0, 55);
-            this.labelPopulationGrowth.Name = "labelPopulationGrowth";
-            this.labelPopulationGrowth.Size = new System.Drawing.Size(168, 17);
-            this.labelPopulationGrowth.TabIndex = 9;
-            this.labelPopulationGrowth.Text = "labelPopulationGrowth";
-            // 
-            // panelPopulationInfo
-            // 
-            this.panelPopulationInfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelPopulationInfo.Controls.Add(this.labelPopulationName);
-            this.panelPopulationInfo.Controls.Add(this.labelPopulationGrowth);
-            this.panelPopulationInfo.Controls.Add(this.labelPopulationIndustry);
-            this.panelPopulationInfo.Controls.Add(this.labelPopulationSize);
-            this.panelPopulationInfo.Controls.Add(this.listViewIndustryBreakdown);
-            this.panelPopulationInfo.Location = new System.Drawing.Point(169, 3);
-            this.panelPopulationInfo.Name = "panelPopulationInfo";
-            this.panelPopulationInfo.Size = new System.Drawing.Size(865, 612);
-            this.panelPopulationInfo.TabIndex = 10;
-            // 
-            // buttonTime
-            // 
-            this.buttonTime.Location = new System.Drawing.Point(975, 8);
-            this.buttonTime.Name = "buttonTime";
-            this.buttonTime.Size = new System.Drawing.Size(75, 23);
-            this.buttonTime.TabIndex = 11;
-            this.buttonTime.Text = "Turn";
-            this.buttonTime.UseVisualStyleBackColor = true;
-            this.buttonTime.Click += new System.EventHandler(this.buttonTime_Click);
+            this.buttonTime1D.Location = new System.Drawing.Point(975, 8);
+            this.buttonTime1D.Name = "buttonTime1D";
+            this.buttonTime1D.Size = new System.Drawing.Size(75, 23);
+            this.buttonTime1D.TabIndex = 11;
+            this.buttonTime1D.Text = "1 Day";
+            this.buttonTime1D.UseVisualStyleBackColor = true;
+            this.buttonTime1D.Click += new System.EventHandler(this.buttonTime_Click);
             // 
             // labelTime
             // 
@@ -255,13 +258,35 @@
             this.labelTime.TabIndex = 12;
             this.labelTime.Text = "labelTime";
             // 
+            // buttonTurn30D
+            // 
+            this.buttonTurn30D.Location = new System.Drawing.Point(894, 8);
+            this.buttonTurn30D.Name = "buttonTurn30D";
+            this.buttonTurn30D.Size = new System.Drawing.Size(75, 23);
+            this.buttonTurn30D.TabIndex = 13;
+            this.buttonTurn30D.Text = "30 Days";
+            this.buttonTurn30D.UseVisualStyleBackColor = true;
+            this.buttonTurn30D.Click += new System.EventHandler(this.buttonTurn30D_Click);
+            // 
+            // buttonTurn1Y
+            // 
+            this.buttonTurn1Y.Location = new System.Drawing.Point(813, 8);
+            this.buttonTurn1Y.Name = "buttonTurn1Y";
+            this.buttonTurn1Y.Size = new System.Drawing.Size(75, 23);
+            this.buttonTurn1Y.TabIndex = 14;
+            this.buttonTurn1Y.Text = "1 Year";
+            this.buttonTurn1Y.UseVisualStyleBackColor = true;
+            this.buttonTurn1Y.Click += new System.EventHandler(this.buttonTurn1Y_Click);
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1336, 698);
+            this.Controls.Add(this.buttonTurn1Y);
+            this.Controls.Add(this.buttonTurn30D);
             this.Controls.Add(this.labelTime);
-            this.Controls.Add(this.buttonTime);
+            this.Controls.Add(this.buttonTime1D);
             this.Controls.Add(this.labelPlanetInformation);
             this.Controls.Add(this.listViewPlanetInformation);
             this.Controls.Add(this.labelPlanetName);
@@ -300,8 +325,10 @@
         private System.Windows.Forms.Label labelPopulationGrowth;
         private System.Windows.Forms.Label labelPopulationSize;
         private System.Windows.Forms.Panel panelPopulationInfo;
-        private System.Windows.Forms.Button buttonTime;
+        private System.Windows.Forms.Button buttonTime1D;
         private System.Windows.Forms.Label labelTime;
+        private System.Windows.Forms.Button buttonTurn30D;
+        private System.Windows.Forms.Button buttonTurn1Y;
     }
 }
 

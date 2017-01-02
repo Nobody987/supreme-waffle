@@ -81,7 +81,7 @@ namespace PlanetaryGovernor.main
             {
                 foreach (Province item in planet_province_list)
                 {
-                    Planet_population_size += item.Province_population_list.Sum(pop => pop.Population_size_total);
+                    Planet_population_size = item.Province_population_list.Sum(pop => pop.Population_size_total);
                 }
             }
             else Planet_population_size = 0;
