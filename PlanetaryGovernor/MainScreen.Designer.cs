@@ -80,26 +80,27 @@
             // 
             // tabPlanet
             // 
+            this.tabPlanet.BackColor = System.Drawing.Color.LightGray;
             this.tabPlanet.Location = new System.Drawing.Point(4, 22);
             this.tabPlanet.Name = "tabPlanet";
             this.tabPlanet.Padding = new System.Windows.Forms.Padding(3);
             this.tabPlanet.Size = new System.Drawing.Size(1037, 618);
             this.tabPlanet.TabIndex = 0;
             this.tabPlanet.Text = "Planet";
-            this.tabPlanet.UseVisualStyleBackColor = true;
             // 
             // tabProvinces
             // 
+            this.tabProvinces.BackColor = System.Drawing.Color.LightGray;
             this.tabProvinces.Location = new System.Drawing.Point(4, 22);
             this.tabProvinces.Name = "tabProvinces";
             this.tabProvinces.Padding = new System.Windows.Forms.Padding(3);
             this.tabProvinces.Size = new System.Drawing.Size(1037, 618);
             this.tabProvinces.TabIndex = 1;
             this.tabProvinces.Text = "Provinces";
-            this.tabProvinces.UseVisualStyleBackColor = true;
             // 
             // tabPopulation
             // 
+            this.tabPopulation.BackColor = System.Drawing.Color.LightGray;
             this.tabPopulation.Controls.Add(this.panelPopulationInfo);
             this.tabPopulation.Controls.Add(this.treeViewPopulationBreakdown);
             this.tabPopulation.Location = new System.Drawing.Point(4, 22);
@@ -107,10 +108,10 @@
             this.tabPopulation.Size = new System.Drawing.Size(1037, 618);
             this.tabPopulation.TabIndex = 2;
             this.tabPopulation.Text = "Population";
-            this.tabPopulation.UseVisualStyleBackColor = true;
             // 
             // panelPopulationInfo
             // 
+            this.panelPopulationInfo.BackColor = System.Drawing.Color.LightGray;
             this.panelPopulationInfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelPopulationInfo.Controls.Add(this.labelPopulationName);
             this.panelPopulationInfo.Controls.Add(this.labelPopulationGrowth);
@@ -164,6 +165,7 @@
             // 
             // listViewIndustryBreakdown
             // 
+            this.listViewIndustryBreakdown.BackColor = System.Drawing.SystemColors.ControlLight;
             this.listViewIndustryBreakdown.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
@@ -188,6 +190,7 @@
             // 
             // treeViewPopulationBreakdown
             // 
+            this.treeViewPopulationBreakdown.BackColor = System.Drawing.SystemColors.ControlLight;
             this.treeViewPopulationBreakdown.HideSelection = false;
             this.treeViewPopulationBreakdown.Location = new System.Drawing.Point(3, 3);
             this.treeViewPopulationBreakdown.Name = "treeViewPopulationBreakdown";
@@ -207,6 +210,7 @@
             // 
             // listViewPlanetInformation
             // 
+            this.listViewPlanetInformation.BackColor = System.Drawing.SystemColors.ControlLight;
             this.listViewPlanetInformation.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnType,
             this.columnValue});
@@ -282,6 +286,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1336, 698);
             this.Controls.Add(this.buttonTurn1Y);
             this.Controls.Add(this.buttonTurn30D);

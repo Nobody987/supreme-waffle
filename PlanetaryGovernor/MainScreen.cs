@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using PlanetaryGovernor.main;
-using System.Globalization;
 using PlanetaryGovernor.tools;
 
 namespace PlanetaryGovernor
@@ -36,27 +32,17 @@ namespace PlanetaryGovernor
             pictureBox1.BackgroundImage = image_f;
         }
 
-        private void GUISetup() //TODO Srediti sta je zakucano
+        private void GUISetup()
         {
             labelTime.Text = Time.Date.ToString();
 
             labelPlanetName.Text = p.Planet_name;
 
             labelPlanetInformation.Text = "Planet Information";
-            listViewPlanetInformation.Items.Add("Sector");
-            listViewPlanetInformation.Items.Add("Solar System");
-            listViewPlanetInformation.Items.Add("Population");
-            listViewPlanetInformation.Items.Add("Surface Area");
-            listViewPlanetInformation.Items.Add("Planet Type");
-            listViewPlanetInformation.Items.Add("Provinces");
 
             panelPopulationInfo.Hide();
 
-            //labelPopulationName.Hide();
-            //labelPopulationSize.Hide();
-            //labelPopulationGrowth.Hide();
-
-            populatePlanetInformation();
+            update_planet_information();
             populatePopulationTab();
         }
 
@@ -76,28 +62,9 @@ namespace PlanetaryGovernor
             }
         }
 
-        private void populatePlanetInformation()
-        {
-            listViewPlanetInformation.Items[0].SubItems.Add(p.Home_sector.ToString());
-            listViewPlanetInformation.Items[1].SubItems.Add(p.Home_solarSystem.ToString());
-            listViewPlanetInformation.Items[2].SubItems.Add(Formatting.format_thousands(p.Planet_population_size));
-            listViewPlanetInformation.Items[3].SubItems.Add(Formatting.format_add_square_kilometers(Formatting.format_thousands(p.Planet_surface_area)));
-            listViewPlanetInformation.Items[4].SubItems.Add(p.Planet_type.ToString());
-            listViewPlanetInformation.Items[5].SubItems.Add(p.Planet_number_of_provinces.ToString());
-        }
-
         private void treeViewPopulationBreakdown_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (treeViewPopulationBreakdown.SelectedNode != treeViewPopulationBreakdown.Nodes[0])
-            {
-                IEnumerable<Population> Ipops_list = population_list_accumulative.Where(population => population.Population_name == treeViewPopulationBreakdown.SelectedNode.Text);
-                List<Population> pops_list = Ipops_list.ToList();
-                if (pops_list.Count() == 1)
-                {
-                    update_population_statistics(pops_list[0]);
-                }
-                else throw new Exception("Error with returning selected population");
-            }
+            update_population_panel();
         }
 
         private void update_population_statistics(Population population)
@@ -130,6 +97,21 @@ namespace PlanetaryGovernor
         {
             updateAllPopulations(TS);
             update_planet_information();
+            update_population_panel();
+        }
+
+        private void update_population_panel()
+        {
+            if (treeViewPopulationBreakdown.SelectedNode != null && treeViewPopulationBreakdown.SelectedNode != treeViewPopulationBreakdown.Nodes[0])
+            {
+                IEnumerable<Population> Ipops_list = population_list_accumulative.Where(population => population.Population_name == treeViewPopulationBreakdown.SelectedNode.Text);
+                List<Population> pops_list = Ipops_list.ToList();
+                if (pops_list.Count() == 1)
+                {
+                    update_population_statistics(pops_list[0]);
+                }
+                else throw new Exception("Error with returning selected population");
+            }
         }
 
         private void update_planet_information()
@@ -159,10 +141,8 @@ namespace PlanetaryGovernor
                 {
                     pop.UpdatePopulation(TS);
                     p.planet_set_population_size(); //TODO
-                    //update_population_statistics(pop);
                 }
             }
-            //treeViewPopulationBreakdown_AfterSelect(null, null); //BAD
         }
 
         private void buttonTurn30D_Click(object sender, EventArgs e)
